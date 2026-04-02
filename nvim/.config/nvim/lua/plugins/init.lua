@@ -1,0 +1,6 @@
+require("plugins.tokyonight")
+require("plugins.neoscroll")
+require("plugins.telescope")
+require("plugins.blink")
+require("plugins.lsp")
+require("plugins.lualine")
