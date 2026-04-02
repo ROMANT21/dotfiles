@@ -1,0 +1,9 @@
+vim.pack.add({
+	 "https://github.com/nvim-tree/nvim-web-devicons",
+   "https://github.com/nvim-lualine/lualine.nvim.git"
+})
+
+local lualine = require("lualine")
+lualine.setup({
+  options = { theme = "tokyonight" }
+})

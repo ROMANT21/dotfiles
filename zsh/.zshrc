@@ -1,32 +1,31 @@
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# shell history
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
 
-# Theme
-ZSH_THEME=""
+# Don't navigate to directory
+# by typing its name
+unsetopt autocd
 
-# Update
-zstyle ':omz:update' mode auto      # update automatically without asking
-zstyle ':omz:update' frequency 13
+# Highlighted tab menu
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
 
-# Which plugins would you like to load?
-plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
+# Set ctrl key commands
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey '^H' backward-kill-word
+bindkey '^[[3;5~' kill-word
+bindkey '^[[Z' reverse-menu-complete
 
-# Fix zsh black ${WORD} highlighting
-typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[comment]="fg=red,bold"
+# syntax highlightning
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_STYLES[comment]='fg=red,bold'
 
+# Add local binaries to PATH
+export PATH="$HOME/.local/bin:$PATH"
 
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-export PATH=$HOME/.local/bin:$PATH
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-
-# Configs local to computer are in $ZSH_CONFIG
+# starship
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+eval "$(starship init zsh)"
