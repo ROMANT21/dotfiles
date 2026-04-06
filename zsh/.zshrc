@@ -18,14 +18,10 @@ bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 bindkey '^[[Z' reverse-menu-complete
 
-# syntax highlightning
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_HIGHLIGHT_STYLES[comment]='fg=red,bold'
+# Source .zsh_custom if it exists
+# (i.e. where I store device-dependent stuff)
+[[ -f ~/.zsh_custom ]] && source ~/.zsh_custom
 
-# Add local binaries to PATH
-export PATH="$HOME/.local/bin:$PATH"
-
-# starship
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-eval "$(starship init zsh)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

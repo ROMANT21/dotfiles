@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-local servers = { 'pyright', 'lua_ls', 'rust_analyzer' }
+local servers = { 'pyright', 'lua_ls', 'rust_analyzer', 'ruby_lsp', 'html' }
 for _, server in ipairs(servers) do
   lsp.config(server, {
     capabilities = blinkcmp.get_lsp_capabilities()
@@ -25,3 +25,8 @@ for _, server in ipairs(servers) do
 
   lsp.enable(server)
 end
+
+-- Add eruby to html server
+lsp.config('html', {
+  filetypes = { 'html', 'eruby' },
+})

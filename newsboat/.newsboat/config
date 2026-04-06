@@ -1,0 +1,4 @@
+include /usr/share/doc/newsboat/contrib/colorschemes/nord
+auto-reload yes
+reload-threads 100
+browser "zen-browser --new-tab %u"

@@ -1,7 +1,7 @@
 vim.pack.add({
    {
      src = "https://github.com/saghen/blink.cmp",
-     version = "v1.10.1",
+     version = "v1.10.2",
    },
 })
 
@@ -11,6 +11,9 @@ blinkcmp.setup({
 
   sources = {
     default = { 'lsp', 'path', 'snippets', 'buffer' },
+  },
+  snippets = {
+    preset = 'default',
   },
 
   -- This helps with the floating window look
