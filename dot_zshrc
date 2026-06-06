@@ -1,0 +1,47 @@
+# shell history
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+echo "sup"
+
+# Env vars
+export VISUAL='nvim'
+export EDITOR='nvim'
+
+# Don't navigate to directory by typing its name
+unsetopt autocd
+
+# Highlighted tab menu
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+
+# Set ctrl key commands
+# NOTE: to see a certain sequence,
+# you can press Ctrl+V and then the key cobon
+bindkey "^[[H"    beginning-of-line             # Home — go to line start
+bindkey "^[[F"    end-of-line                   # End — go to line end
+
+bindkey "^U"      backward-kill-line            # Ctrl+U — kill from cursor to line start
+bindkey "^K"      kill-line                     # Ctrl+K — kill from cursor to line end
+
+bindkey "^R"      history-incremental-search-backward  # Ctrl+R — search history backward
+bindkey "^S"      history-incremental-search-forward   # Ctrl+S — search history forward
+bindkey "^[[A"    up-line-or-history            # Up — previous history entry
+bindkey "^[[B"    down-line-or-history          # Down — next history entry
+
+bindkey "^[[1;5C" forward-word                  # Ctrl+Right — move forward one word
+bindkey "^[[1;5D" backward-word                 # Ctrl+Left — move backward one word
+bindkey "^H"      backward-kill-word            # Ctrl+Backspace — delete word behind cursor
+bindkey "^[[Z"    reverse-menu-complete         # Shift+Tab — cycle completions backward
+
+# Source .zsh_custom if it exists
+# (i.e. where I store device-dependent stuff)
+[[ -f ~/.zsh_custom ]] && source ~/.zsh_custom
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Auto venv
+[[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
