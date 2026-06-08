@@ -3,8 +3,6 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-echo "sup"
-
 # Env vars
 export VISUAL='nvim'
 export EDITOR='nvim'
