@@ -49,3 +49,13 @@ o.clipboard = "unnamedplus"
 
 -- Commandline height
 o.cmdheight = 1
+
+-- Terminal
+function terminal_autocmds()
+  vim.api.nvim_create_autocmd('TermOpen',{
+    callback=function()
+      vim.wo.relativenumber = true
+    end
+  })
+end
+terminal_autocmds()
