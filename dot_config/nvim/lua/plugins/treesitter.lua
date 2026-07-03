@@ -5,4 +5,4 @@ vim.pack.add({
 
 treesitter = require('nvim-treesitter')
 treesitter.setup()
-treesitter.install({'python'})
+treesitter.install({'python', 'lua'})
